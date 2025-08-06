@@ -1,0 +1,262 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    color: #333;
+  }
+  
+  .dashboard {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background: #1e88e5;
+    color: white;
+    height: 100vh;
+    padding: 1em 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    transform: translateX(0);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+    padding: 0 1.5em;
+  }
+  
+  .logo-text {
+    font-weight: bold;
+  }
+  
+  .logo-full {
+    display: none;
+    margin-left: 0.5em;
+    white-space: nowrap;
+  }
+  
+  .sidebar:hover .logo-full,
+  .sidebar.open .logo-full {
+    display: inline-block;
+  }
+  
+  .sidebar.open .logo-text {
+    display: none;
+  }
+  
+  .nav {
+    margin-top: 2em;
+    width: 100%;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.8em 1.5em;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  
+  .nav a:hover,
+  .nav a.active {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .main-content {
+    margin-left: 200px;
+    padding: 2em;
+    width: 100%;
+    transition: margin-left 0.3s;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  
+  .header input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.6em 1em;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  .menu-toggle {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    display: none;
+    cursor: pointer;
+    color: #1e88e5;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+  }
+  
+  .badge {
+    background: crimson;
+    color: white;
+    padding: 0 7px;
+    border-radius: 50%;
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+  
+  .estadisticas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5em;
+    margin-bottom: 2em;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1.5em;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h3 {
+    font-size: 2em;
+    margin-bottom: 0.3em;
+  }
+  
+  .card p {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .positivo {
+    color: #43a047;
+    font-weight: bold;
+  }
+  
+  .negativo {
+    color: #e53935;
+    font-weight: bold;
+  }
+  
+  .tabla-usuarios h2 {
+    margin-bottom: 1em;
+  }
+  
+  .tabla-usuarios table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .tabla-usuarios th,
+  .tabla-usuarios td {
+    padding: 1em;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .rol,
+  .estado {
+    padding: 0.3em 0.7em;
+    border-radius: 5px;
+    font-size: 0.85em;
+    color: white;
+    display: inline-block;
+  }
+  
+  .rol.admin {
+    background: #d32f2f;
+  }
+  
+  .rol.usuario {
+    background: #1976d2;
+  }
+  
+  .rol.moderador {
+    background: #f57c00;
+  }
+  
+  .estado.activo {
+    background: #388e3c;
+  }
+  
+  .estado.inactivo {
+    background: #757575;
+  }
+  
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+  
+  .overlay.show {
+    display: block;
+  }
+  
+  @media (max-width: 1023px) {
+    .estadisticas {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+  
+    .sidebar.open {
+      transform: translateX(0);
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    .main-content {
+      margin-left: 0;
+    }
+  
+    .estadisticas {
+      grid-template-columns: 1fr;
+    }
+  
+    .header input {
+      width: 100%;
+    }
+  }
+  
